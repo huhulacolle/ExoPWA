@@ -10,6 +10,17 @@ export default defineConfig({
       devOptions: {
         enabled: true
       },
+      manifest: {
+        start_url: '/',
+      },
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: "https://api.spacexdata.com/",
+            handler: 'StaleWhileRevalidate'
+          }
+        ]
+      }
     })
   ],
 })
