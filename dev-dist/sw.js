@@ -91,6 +91,6 @@ define(['./workbox-1af58a58'], (function (workbox) { 'use strict';
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
     allowlist: [/^\/$/]
   }));
-  workbox.registerRoute("https://api.spacexdata.com/", new workbox.StaleWhileRevalidate(), 'GET');
+  workbox.registerRoute("https://jsonplaceholder.typicode.com/", new workbox.StaleWhileRevalidate(), 'GET');
 
 }));

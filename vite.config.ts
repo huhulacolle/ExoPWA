@@ -16,7 +16,7 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: "https://api.spacexdata.com/",
+            urlPattern: "https://jsonplaceholder.typicode.com/",
             handler: 'StaleWhileRevalidate'
           }
         ]
