@@ -6,10 +6,7 @@ import { IPost } from '../interfaces/IPost';
 
 export default function CardComponent({ id, title, body }: IPost) {
   return (
-    <div style={{
-      width: '30%',
-      height: '100%   '
-    }}>
+    <div className='flex-col max-w-sm m-5'>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>

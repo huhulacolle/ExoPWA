@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <div >
+    <div className='m-0 bg-slate-300'>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -40,14 +40,7 @@ function App() {
           <Button color="inherit" onClick={() => alert("feur")}>Quoi ?</Button>
         </Toolbar>
       </AppBar>
-      <div style={{
-        display: 'flex',
-        maxWidth: '100%', 
-        flexWrap: 'nowrap',
-        justifyContent: 'space-around',
-        gap: '3',
-             
-      }}>
+      <div className='container place-content-center mx-auto flex flex-wrap p-10'>
         {Posts.map(p => (
           <CardComponent id={p.id} title={p.title} body={p.body} />
         ))}
