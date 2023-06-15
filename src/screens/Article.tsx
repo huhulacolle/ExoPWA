@@ -34,6 +34,7 @@ function Article() {
               const networkResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
               const data = networkResponse.data as IPost;        
               cache.put(`https://jsonplaceholder.typicode.com/posts/${id}`, new Response(JSON.stringify(data)));
+              getPosts()
             }
           } catch (error) {
             alert("l'article n'est pas en cache");

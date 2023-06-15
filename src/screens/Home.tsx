@@ -26,6 +26,7 @@ function Home() {
               const networkResponse = await axios.get('https://jsonplaceholder.typicode.com/posts');
               const data = networkResponse.data as IPost[];        
               cache.put('https://jsonplaceholder.typicode.com/posts', new Response(JSON.stringify(data)));
+              getPosts();
             }
           } catch (error) {
             alert(error)
