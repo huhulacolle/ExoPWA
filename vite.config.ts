@@ -13,6 +13,9 @@ export default defineConfig({
       manifest: {
         start_url: '/',
       },
+      includeAssets: [
+        '/article/*',
+      ],
       workbox: {
         runtimeCaching: [
           {
