@@ -21,15 +21,24 @@ function Article() {
         title: 0
     });
 
-    function getPosts(): void {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-            .then(data => {
-                setPosts(data.data)
-            })
-            .catch(e => {
-                alert("l'article n'est pas en cache");
-                navigate(-1);
-            })
+    async function getPosts(): Promise<void> {
+        try {
+            const cacheName = 'my-api-cache';
+            const cache = await caches.open(cacheName);
+            const cacheResponse = await cache.match(`https://jsonplaceholder.typicode.com/posts/${id}`); 
+        
+            if (cacheResponse) {
+              const cachedData = await cacheResponse.json() as IPost;
+              setPosts(cachedData)
+            } else {
+              const networkResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+              const data = networkResponse.data as IPost;        
+              cache.put(`https://jsonplaceholder.typicode.com/posts/${id}`, new Response(JSON.stringify(data)));
+            }
+          } catch (error) {
+            alert("l'article n'est pas en cache");
+            navigate(-1);
+          }
     }
 
     return (
